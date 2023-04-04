@@ -1,0 +1,223 @@
+/***
+    The new CSS reset - version 1.8.4 (last updated 14.2.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+ */
+ *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+    all: revert;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&display=swap');
+
+:root{
+    --color-sedan: hsl(31, 77%, 52%);
+    --color-suvs: hsl(184, 100%, 22%);
+    --color-luxury: hsl(179, 100%, 13%);
+
+    --paragraphs-trans: hsla(0, 0%, 100%, 0.75);
+    --background-color: hsl(0, 0%, 95%);
+
+}
+
+html,body{
+    height: 100%;
+    font-size: 15px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-weight: 400;
+    position: relative;
+
+}
+
+.info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 57.5rem;
+    height: 31.25rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 3rem 3rem;
+    color: var(--paragraphs-trans);
+    line-height: 1.6rem;
+}
+
+h1{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'Big Shoulders Display', cursive;
+    font-weight: 700;
+    color: var(--background-color);
+}
+
+img{
+    width: 64px;
+    height: 40px;
+}
+
+p{
+    margin-bottom: 3rem;
+}
+
+.card__sedans{
+    background-color: var(--color-sedan);
+}
+
+.card__suvs{
+    background-color: var(--color-suvs);
+}
+
+.card__luxury{
+    background-color: var(--color-luxury);
+}
+
+.btn{
+    background-color: var(--background-color);
+    border-radius: 2rem;
+    width: 150px;
+    text-align: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.btn-sedans{
+    color: var(--color-sedan);
+}
+
+.btn-suvs{
+    color: var(--color-suvs);
+}
+
+.btn-luxury{
+    color: var(--color-luxury);
+}
+
+.btn:hover{
+    background-color: inherit;
+    color: var(--background-color);
+    border: 2px solid var(--background-color);
+    padding: calc(1rem - 2px) 0 calc(1rem - 2px) 0;
+}
+
+@media (max-width: 376px) {
+
+    html,body{
+        height: 1510px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: 90%;
+    }
+
+    p{
+        margin-bottom: 0;
+    }
+    
+}
+    
+
+
+
